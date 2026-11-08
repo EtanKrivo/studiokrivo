@@ -201,7 +201,9 @@
     var room = id === "all" ? null : document.getElementById("piece-" + id);
     if (mqMobile.matches) {
       var target = room || wall;
-      glideTo(target.getBoundingClientRect().top + window.scrollY - (room ? 190 : 150));
+      // land just below the sticky header + filter rows (their height varies with how many rows wrap)
+      var off = header.offsetHeight + gallery.querySelector(".gallery__head").offsetHeight + 16;
+      glideTo(target.getBoundingClientRect().top + window.scrollY - off);
       return;
     }
     if (!room) { glideTo(galleryTop); return; }

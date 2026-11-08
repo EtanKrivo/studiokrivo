@@ -960,15 +960,22 @@ html:not(.js) mark.hl { background-size: 100% 100%; color: var(--hl); }
     border-bottom: 1px solid var(--line);
   }
   .gallery__head .section-title { font-size: 34px; }
+  /* phones: every filter on screen, wrapped onto centred rows */
   .filters {
-    flex: 1 1 100%;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    margin: 0 calc(-1 * var(--gutter));
-    padding: 0 var(--gutter);
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: visible;
+    gap: 5px;
   }
-  .filters::-webkit-scrollbar { display: none; }
+  .filters > :first-child,
+  .filters > :last-child { margin: 0; }
+  .chip { height: 28px; padding: 0 9px 0 3px; gap: 5px; font-size: 11.5px; }
+  .chip__thumb { width: 20px; height: 20px; }
+
+  /* TEMPORARY (phones only): Methodology section and its menu link are hidden.
+     Delete these two rules to bring it back. */
+  #methodology,
+  .nav a[href="#methodology"] { display: none; }
   .gallery__viewport { display: block; overflow: visible; }
   .wall {
     flex-direction: column;
