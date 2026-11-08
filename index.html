@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studio Krivo</title>
+  <meta name="description" content="Founded in 2025 and based in Montreal, Studio Krivo specializes in the design and production of innovative sculptures.">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    /* Set theme before paint to avoid a flash */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("sk-theme"); } catch (e) {}
+      if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css?v=34">
+</head>
+<body>
+  <a class="skip" href="#gallery">Skip to gallery</a>
+
+  <!-- ───────────── Header ───────────── -->
+  <header class="site-header" id="top-bar">
+    <div class="site-header__bg" aria-hidden="true"></div>
+    <a class="brand" href="#top" data-scroll aria-label="Studio Krivo — back to top">
+      <img class="brand__mark" src="images/logo-mark.png" width="144" height="144" alt="">
+      <span class="brand__name">Studio Krivo</span>
+    </a>
+
+    <nav class="nav" id="site-nav" aria-label="Sections">
+      <a href="#gallery" data-scroll>Gallery</a>
+      <a href="#methodology" data-scroll>Methodology</a>
+      <a href="#about" data-scroll>About Us</a>
+      <a href="#contact" data-scroll>Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Switch to night mode" title="Day / night">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z"/></svg>
+      </button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ───────────── Landing: three pictures ───────────── -->
+    <section class="landing" aria-label="Studio Krivo sculptures" data-collection="sculptures">
+      <figure class="landing__pic"><div class="landing__frame"><img src="images/hero-1.jpg" alt="Parametric Attractor Cube in concrete" fetchpriority="high"></div></figure>
+      <figure class="landing__pic"><div class="landing__frame"><img src="images/hero-3.jpg" alt="Tile Display with interchangeable concrete tiles" fetchpriority="high"></div></figure>
+      <figure class="landing__pic"><div class="landing__frame"><img src="images/hero-2.jpg" alt="Ghost Cloth sculpture" fetchpriority="high"></div></figure>
+    </section>
+
+    <!-- ───────────── The Studio (about company) ───────────── -->
+    <section class="studio section" id="studio" aria-labelledby="studio-h">
+      <figure class="studio__img reveal">
+        <img class="studio__img-day" src="images/studio-cutout.png?v=34" alt="Line render of the Attractor Cube" loading="lazy" width="1600" height="759">
+        <!-- night version is pre-rendered: CSS-inverting a semi-transparent PNG left speckled edges -->
+        <img class="studio__img-night" src="images/studio-cutout-dark.png?v=34" alt="" loading="lazy" width="1600" height="759">
+      </figure>
+      <div class="studio__text">
+        <h2 class="eyebrow" id="studio-h">&lt; The Studio &gt;</h2>
+        <p class="lead">Founded in 2025 and based in Montreal, Studio Krivo specializes in the design and production of innovative sculptures.</p>
+        <p>Utilizing advanced digital modeling through Grasshopper, 3D printed molds, and our own custom engineered concrete mixes, Studio Krivo offers institutions and partners works that combine technical innovation with lasting artistic value.</p>
+      </div>
+    </section>
+
+    <!-- ───────────── Gallery ───────────── -->
+    <section class="gallery" id="gallery" aria-labelledby="gallery-h">
+      <div class="gallery__sticky">
+        <div class="gallery__head">
+          <h2 class="section-title" id="gallery-h"><span class="dot"></span>Gallery<span class="dot"></span></h2>
+          <div class="filters" role="toolbar" aria-label="Filter by sculpture"></div>
+        </div>
+        <div class="gallery__viewport">
+          <div class="wall" id="wall"></div>
+        </div>
+        <div class="gallery__floor" aria-hidden="true">
+          <span class="floor__progress"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── Methodology (kept as on the current site) ───────────── -->
+    <section class="method section" id="methodology" aria-labelledby="method-h">
+      <h2 class="section-title" id="method-h"><span class="dot"></span>Methodology<span class="dot"></span></h2>
+
+      <ol class="steps">
+        <li class="step step--left">
+          <div class="step__media reveal">
+            <img src="images/method-1.png" alt="Grasshopper definition and 3D model of a design" loading="lazy" width="1600" height="640">
+          </div>
+          <div class="step__text">
+            <h3>Step 1: Creating the Design</h3>
+            <p>Every project starts with some sketches and brainstorming until a solid idea can be conceptualized. From there, the design is 3D-modeled in Rhino3D and Grasshopper where it can be visualized and rendered to see how it would look realistically. Many iterations are then made to find the best design possible for fabrication.</p>
+          </div>
+        </li>
+        <li class="step-link step-link--ltr" aria-hidden="true"></li>
+
+        <li class="step step--right">
+          <div class="step__media step__media--swap reveal">
+            <img src="images/method-2a.png" alt="Mold design generated with the Dendro plugin" loading="lazy" width="1600" height="665">
+            <img src="images/method-2b.png" alt="" loading="lazy" width="1600" height="621">
+          </div>
+          <div class="step__text">
+            <h3>Step 2: Creating the Mold Designs</h3>
+            <p>Once the design has been completed, an inner and outter mold is then made using the Dendro plugin for Grasshopper. This plugin allows us to create molds that ensure silicone will only be cast where it is needed, greatly reducing the cost of the project. This method ensures we use the least amount of recources necessary to achieve the greatest amount of details possible.</p>
+          </div>
+        </li>
+        <li class="step-link step-link--rtl" aria-hidden="true"></li>
+
+        <li class="step step--left">
+          <div class="step__media step__media--pair reveal">
+            <img src="images/method-3a.jpg" alt="3D-printed inner and outer molds" loading="lazy" width="1600" height="1200">
+            <img src="images/method-3b.jpg" alt="Silicone mold in a 3D-printed shell" loading="lazy" width="1600" height="2133">
+          </div>
+          <div class="step__text">
+            <h3>Step 3: Creating the Silicone Mold</h3>
+            <p>Once the molds have been printed, they are placed together and all gaps are sealed to prevent any leakage. Silicone is then painted on to the inner mold, allowing it to seep into every crevice, and then poured into the outer mold. Both molds are then placed together and the silicone is left to cure for six hours. Once complete, the silicone mold is examined and any imperfection is then corrected.</p>
+          </div>
+        </li>
+        <li class="step-link step-link--ltr" aria-hidden="true"></li>
+
+        <li class="step step--right">
+          <div class="step__media reveal">
+            <img src="images/method-4.jpg" alt="Concrete cast in silicone molds on the workbench" loading="lazy" width="1600" height="1200">
+          </div>
+          <div class="step__text">
+            <h3>Step 4: Casting the Concrete</h3>
+            <p>Every project has their own set of conditions that need to be assessed before the concrete mix can be made to ensure the most optimal mix design. The concrete mix is different for sculptures that rest on a flat tabletop surface to pieces that are hung up on a wall. Once a mix design has been made, it's casted in the silicone mold and a custom 3D-printed support structure is placed inside the concrete if needed.</p>
+          </div>
+        </li>
+        <li class="step-link step-link--rtl" aria-hidden="true"></li>
+
+        <li class="step step--left">
+          <div class="step__media step__media--trio reveal">
+            <img src="images/method-5a.jpg" alt="Demolded spiked bowl" loading="lazy" width="1600" height="2133">
+            <img src="images/method-5b.jpg" alt="Cured Attractor Cube" loading="lazy" width="1600" height="2133">
+            <img src="images/method-5c.jpg" alt="Cured pieces on the workbench" loading="lazy" width="1600" height="1200">
+          </div>
+          <div class="step__text">
+            <h3>Step 5: Letting the Concrete Cure</h3>
+            <p>The curing process depends on the size of the project. For smaller scale sculptures, the concrete is left to cure in a tub of water completely submerged for two weeks. For larger scale sculptures and wall art pieces, the concrete is left to cure in the mold where it is misted at a consistent rate throughout the process to avoid it from drying up. Once cured, the concrete is polished and waxed as needed, and then finally it is ready to be enjoyed!</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ───────────── About us ───────────── -->
+    <section class="about section" id="about" aria-labelledby="about-h">
+      <h2 class="section-title" id="about-h"><span class="dot"></span>About Us<span class="dot"></span></h2>
+      <div class="about__body">
+        <p class="lead">Hello, my name is Etan&nbsp;Krivorot and I am the founder of Studio Krivo.</p>
+        <div class="about__cols">
+          <p>I am currently pursuing a Bachelor’s degree in <mark class="hl">Civil Engineering at McGill University</mark>, with plans to complete a Master’s degree in Architecture afterwards. I love being creative and designing any idea that comes to mind, especially making 3D models I can later turn into <mark class="hl">sculptures, renders, and other works of art</mark>.</p>
+          <p>I spend a lot of my time learning how to model in Rhino 3D, more specifically, <mark class="hl">parametric modeling with Grasshopper.</mark> I love discovering new plugins for Grasshopper, exploring their capabilities, and determining how they could be used in new and exciting ways.</p>
+          <p>I plan on becoming an <mark class="hl">architect and studying design all around the world</mark>, deriving inspiration from as many sources as I can learn from. I'm committed to learning as much as I can about creative design and the different thought processes that go into <mark class="hl">creating sustainable, thought provoking, and artistic buildings.</mark></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── Contact ───────────── -->
+    <section class="contact section" id="contact" aria-labelledby="contact-h">
+      <h2 class="section-title" id="contact-h"><span class="dot"></span>Contact<span class="dot"></span></h2>
+      <div class="contact__body reveal">
+        <p class="contact__lead">Interested in working together? Have any questions for us?<br>We are always open for new opportunities.</p>
+        <p class="contact__label">Send us an email:</p>
+        <a class="contact__email" href="mailto:Etan@krivorot.com">Etan@krivorot.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Studio Krivo©</span>
+    <span>2026</span>
+  </footer>
+
+  <a class="back-to-top" href="#top" data-scroll>Back to top ^</a>
+
+  <!-- Piece detail (content from each project page) -->
+  <dialog class="piece" id="piece" aria-labelledby="piece-title">
+    <!-- zero-height sticky bar: keeps the close button pinned in the panel's corner while scrolling -->
+    <div class="piece__bar"><button class="piece__close" type="button" aria-label="Close">×</button></div>
+    <div class="piece__inner">
+      <header class="piece__head">
+        <p class="piece__index"></p>
+        <h2 class="piece__title" id="piece-title"></h2>
+        <p class="piece__meta"></p>
+      </header>
+      <div class="piece__text"></div>
+      <p class="piece__inquiry"></p>
+      <h3 class="piece__sub">Realizations</h3>
+      <div class="piece__grid"></div>
+      <div class="piece__below"></div>
+    </div>
+  </dialog>
+
+  <div class="cursor" aria-hidden="true"></div>
+
+  <script src="js/data.js?v=34"></script>
+  <script src="js/main.js?v=34"></script>
+</body>
+</html>
