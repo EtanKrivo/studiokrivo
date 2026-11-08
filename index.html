@@ -18,7 +18,7 @@
       document.documentElement.setAttribute("data-theme", t);
     })();
   </script>
-  <link rel="stylesheet" href="css/style.css?v=36">
+  <link rel="stylesheet" href="css/style.css?v=37">
 </head>
 <body>
   <a class="skip" href="#gallery">Skip to gallery</a>
@@ -27,7 +27,11 @@
   <header class="site-header" id="top-bar">
     <div class="site-header__bg" aria-hidden="true"></div>
     <a class="brand" href="#top" data-scroll aria-label="Studio Krivo — back to top">
-      <img class="brand__mark" src="images/logo-mark.png" width="144" height="144" alt="">
+      <picture class="brand__pic">
+        <!-- phones: outline + 3D edge baked into the image (stacked CSS drop-shadows don't render reliably on phones) -->
+        <source media="(max-width: 860px)" srcset="images/logo-mark-outlined.png?v=37">
+        <img class="brand__mark" src="images/logo-mark.png" width="144" height="144" alt="">
+      </picture>
       <span class="brand__name">Studio Krivo</span>
     </a>
 
@@ -60,9 +64,9 @@
     <!-- ───────────── The Studio (about company) ───────────── -->
     <section class="studio section" id="studio" aria-labelledby="studio-h">
       <figure class="studio__img reveal">
-        <img class="studio__img-day" src="images/studio-cutout.png?v=36" alt="Line render of the Attractor Cube" loading="lazy" width="1600" height="759">
+        <img class="studio__img-day" src="images/studio-cutout.png?v=37" alt="Line render of the Attractor Cube" loading="lazy" width="1600" height="759">
         <!-- night version is pre-rendered: CSS-inverting a semi-transparent PNG left speckled edges -->
-        <img class="studio__img-night" src="images/studio-cutout-dark.png?v=36" alt="" loading="lazy" width="1600" height="759">
+        <img class="studio__img-night" src="images/studio-cutout-dark.png?v=37" alt="" loading="lazy" width="1600" height="759">
       </figure>
       <div class="studio__text">
         <h2 class="eyebrow" id="studio-h">&lt; The Studio &gt;</h2>
@@ -203,7 +207,7 @@
 
   <div class="cursor" aria-hidden="true"></div>
 
-  <script src="js/data.js?v=36"></script>
-  <script src="js/main.js?v=36"></script>
+  <script src="js/data.js?v=37"></script>
+  <script src="js/main.js?v=37"></script>
 </body>
 </html>

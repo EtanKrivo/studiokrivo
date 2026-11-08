@@ -201,8 +201,9 @@
     var room = id === "all" ? null : document.getElementById("piece-" + id);
     if (mqMobile.matches) {
       var target = room || wall;
-      // land just below the sticky header + filter rows (their height varies with how many rows wrap)
-      var off = header.offsetHeight + gallery.querySelector(".gallery__head").offsetHeight + 16;
+      // land just below the fixed header (plus the filter rows if they're pinned too)
+      var head = gallery.querySelector(".gallery__head");
+      var off = header.offsetHeight + 16 + (getComputedStyle(head).position === "sticky" ? head.offsetHeight : 0);
       glideTo(target.getBoundingClientRect().top + window.scrollY - off);
       return;
     }
@@ -651,6 +652,12 @@
 
   window.addEventListener("load", function () { layoutGallery(); drawDots(); });
   drawDots();
+  // phones: pin the landing height to the first measured viewport height so it doesn't jump
+  // when the browser toolbar collapses on scroll; only re-measure on rotation
+  function setLandingHeight() { root.style.setProperty("--landing-h", window.innerHeight + "px"); }
+  setLandingHeight();
+  window.addEventListener("orientationchange", function () { setTimeout(setLandingHeight, 300); });
+
   // start the landing reveal (timeout as well, since rAF pauses in background tabs)
   var reveal = function () { document.body.classList.add("is-loaded"); };
   requestAnimationFrame(function () { requestAnimationFrame(reveal); });

@@ -152,6 +152,8 @@ button { font: inherit; color: inherit; }
   margin-right: auto;
 }
 
+.brand__pic { display: block; line-height: 0; }
+
 .brand__mark {
   width: 34px;
   height: 34px;
@@ -935,7 +937,12 @@ html:not(.js) mark.hl { background-size: 100% 100%; color: var(--hl); }
   .nav.is-open { opacity: 1; transform: none; visibility: visible; }
   .nav a { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 28px; }
   .brand__name { font-size: 26px; }
-  .brand__mark { width: 30px; height: 30px; }
+  /* phones use logo-mark-outlined.png (white + black outline + 3D edge baked in, 2 css px of padding
+     each side at the 34px scale = 1.76px at 30px), so only the moving cast shadow stays as a filter */
+  .brand__mark {
+    width: 33.5px; height: 33.5px; margin: -1.76px;
+    filter: drop-shadow(var(--sx) 3px 0.8px rgba(0, 0, 0, 0.4));
+  }
 
   .landing {
     grid-template-columns: 1fr 1fr;
@@ -952,9 +959,7 @@ html:not(.js) mark.hl { background-size: 100% 100%; color: var(--hl); }
   .gallery { height: auto !important; --row-h: auto; }
   .gallery__sticky { position: static; height: auto; overflow: visible; }
   .gallery__head {
-    position: sticky;
-    top: var(--header-h);
-    z-index: 5;
+    position: static; /* phones: scrolls away with the page instead of pinning under the header */
     padding: 16px var(--gutter) 14px;
     background: var(--bg-2);
     border-bottom: 1px solid var(--line);
@@ -971,6 +976,18 @@ html:not(.js) mark.hl { background-size: 100% 100%; color: var(--hl); }
   .filters > :last-child { margin: 0; }
   .chip { height: 28px; padding: 0 9px 0 3px; gap: 5px; font-size: 11.5px; }
   .chip__thumb { width: 20px; height: 20px; }
+
+  /* phones: no spotlight glow above frames (it showed as a hard-edged pale band behind the titles) */
+  .frame::before { display: none; }
+
+  /* phones: no "Back to top" button */
+  .back-to-top { display: none; }
+
+  /* phones: landing photos sit still — fixed height measured once at load (--landing-h, set in JS)
+     so the browser toolbar showing/hiding doesn't resize them, and no zoom/reveal animation */
+  .landing { height: var(--landing-h, 100svh); min-height: 0; }
+  .landing__pic img,
+  .is-loaded .landing__pic img { transform: none; clip-path: none; transition: none; }
 
   /* TEMPORARY (phones only): Methodology section and its menu link are hidden.
      Delete these two rules to bring it back. */
